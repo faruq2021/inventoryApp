@@ -7,3 +7,4 @@ namespace inventoryApp.Models
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
 }
+// nothing to see here
