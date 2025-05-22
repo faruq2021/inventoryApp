@@ -1,0 +1,32 @@
+@model inventoryApp.Models.Brand
+
+<h1>Brand Details</h1>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h4>@Model.Name</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9">@Model.Description</dd>
+            
+            <dt class="col-sm-3">Logo</dt>
+            <dd class="col-sm-9">
+                @if (!string.IsNullOrEmpty(Model.LogoUrl))
+                {
+                    <img src="@Model.LogoUrl" alt="@Model.Name logo" style="max-height: 100px;" />
+                }
+                else
+                {
+                    <span>No logo available</span>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div>
+    <a href="/Brand/Edit/@Model.Id" class="btn btn-warning">Edit</a>
+    <a href="/Brand" class="btn btn-secondary">Back to List</a>
+</div>

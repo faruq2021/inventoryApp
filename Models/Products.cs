@@ -12,4 +12,3 @@
         public virtual Brand Brand { get; set; }
     }
 }
-
