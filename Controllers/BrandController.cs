@@ -14,6 +14,12 @@ namespace InventoryApp.Controllers
             new Brand { Id = 3, Name = "Dell", Description = "Computer hardware manufacturer", LogoUrl = "/images/dell-logo.png" },
         };
 
+        // Add this new method
+        public List<Brand> GetAllBrands()
+        {
+            return _brands;
+        }
+
         public IActionResult Index() => View(_brands);
 
         public IActionResult Details(int id)
