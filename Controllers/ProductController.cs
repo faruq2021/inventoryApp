@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using inventoryApp.Models;
+using InventoryApp.Controllers;
 
 namespace InventoryApp.Controllers
 {
@@ -22,7 +23,11 @@ namespace InventoryApp.Controllers
             return View(product);
         }
 
-        public IActionResult Create() => View();
+        public IActionResult Create() 
+        {
+            ViewBag.Brands = BrandController._brands;
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Create(Product product)
@@ -35,6 +40,7 @@ namespace InventoryApp.Controllers
         public IActionResult Edit(int id)
         {
             var product = _products.FirstOrDefault(p => p.Id == id);
+            ViewBag.Brands = BrandController._brands;
             return View(product);
         }
 
@@ -47,13 +53,14 @@ namespace InventoryApp.Controllers
                 product.Name = updatedProduct.Name;
                 product.Price = updatedProduct.Price;
                 product.Quantity = updatedProduct.Quantity;
+                product.BrandId = updatedProduct.BrandId;
             }
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            var product = _products.FirstOrDefault(p => p.Id == id);   //  product.Id = 3, name= "Tablet", price = 1000, quantity = 15
+            var product = _products.FirstOrDefault(p => p.Id == id);   
             return View(product);
         }
 
