@@ -20,6 +20,11 @@ namespace InventoryApp.Controllers
         public IActionResult Details(int id)
         {
             var brand = _brands.FirstOrDefault(b => b.Id == id);
+            var products = ProductController._products
+                .Where(p => p.BrandId == id)
+                .ToList();
+                
+            ViewBag.Products = products;
             return View(brand);
         }
 

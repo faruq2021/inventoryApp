@@ -8,7 +8,7 @@ namespace InventoryApp.Controllers
 {
     public class ProductController : Controller
     {
-        private static List<Product> _products = new List<Product>
+        public static List<Product> _products = new List<Product>
         {
             new Product { Id = 1, Name = "Laptop", Price = 2000, Quantity = 10 },
             new Product { Id = 2, Name = "Phone", Price = 800, Quantity = 20 },

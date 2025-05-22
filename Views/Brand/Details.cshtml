@@ -26,6 +26,48 @@
     </div>
 </div>
 
+<!-- New section to display products under this brand -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h4>Products by @Model.Name</h4>
+    </div>
+    <div class="card-body">
+        @if (ViewBag.Products != null && ViewBag.Products.Count > 0)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in ViewBag.Products)
+                    {
+                        <tr>
+                            <td>@product.Name</td>
+                            <td>$@product.Price</td>
+                            <td>@product.Quantity</td>
+                            <td>
+                                <a href="/Product/Details/@product.Id" class="btn btn-sm btn-info">Details</a>
+                                <a href="/Product/Edit/@product.Id" class="btn btn-sm btn-warning">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No products found for this brand.</p>
+        }
+    </div>
+</div>
+
+
+
 <div>
     <a href="/Brand/Edit/@Model.Id" class="btn btn-warning">Edit</a>
     <a href="/Brand" class="btn btn-secondary">Back to List</a>
