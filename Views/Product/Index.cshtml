@@ -1,0 +1,76 @@
+﻿@model List<inventoryApp.Models.Product>
+
+<style>
+    .status-instock {
+        color: white;
+        background-color: #007bff;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+
+    .status-outofstock {
+        color: white;
+        background-color: #dc3545;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+
+    .status-reserved {
+        color: black;
+        background-color: #ffc107;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+
+    .status-default {
+        color: white;
+        background-color: #6c757d;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 10px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+</style>
+
+<h1>Product List</h1>
+<a href="/Product/Create">Add Product</a>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var p in Model)
+    {
+        string statusClass = p.StatusName switch
+        {
+            "In Stock" => "status-instock",
+            "Out of Stock" => "status-outofstock",
+            "Reserved" => "status-reserved",
+            _ => "status-default"
+        };
+
+        <tr>
+            <td>@p.Name</td>
+            <td>@p.Price</td>
+            <td>@p.Quantity</td>
+            <td><span class="@statusClass">@p.StatusName</span></td>
+            <td>
+                <a href="/Product/Details/@p.Id">View</a> |
+                <a href="/Product/Edit/@p.Id">Edit</a> |
+                <a href="/Product/Delete/@p.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

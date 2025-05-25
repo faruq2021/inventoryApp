@@ -1,0 +1,8 @@
+﻿@model inventoryApp.Models.Product
+<h1>Delete Confirmation</h1>
+<p>Are you sure you want to delete @Model.Name?</p>
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Yes, delete</button>
+</form>
+<a href="/Product">Cancel</a>
