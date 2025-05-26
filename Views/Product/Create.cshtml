@@ -1,5 +1,5 @@
 ﻿@model inventoryApp.Models.Product
-@inject InventoryApp.Controllers.BrandController BrandController
+@* @inject InventoryApp.Controllers.BrandController BrandController *@
 
 <h1>Create New Product</h1>
 
@@ -20,10 +20,10 @@
         <label asp-for="BrandId">Brand</label>
         <select asp-for="BrandId" class="form-control">
             <option value="">-- Select Brand --</option>
-            @foreach (var brand in BrandController._brands)
-            {
-                <option value="@brand.Id">@brand.Name</option>
-            }
+            @* @foreach (var brand in BrandController._brands) *@
+            @* { *@
+            @*     <option value="@brand.Id">@brand.Name</option> *@
+            @* } *@
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>

@@ -1,0 +1,22 @@
+﻿<!-- Views/Category/Edit.cshtml -->
+@model inventoryApp.Models.Category
+<div class="container mt-5">
+    <h1 class="game-title">✏️ Edit Category</h1>
+    <div class="game-card">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Details"></label>
+                <textarea asp-for="Details" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Details" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-game">💾 Update</button>
+            <a href="/Category" class="btn btn-secondary">↩️ Cancel</a>
+        </form>
+    </div>
+</div>

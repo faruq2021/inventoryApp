@@ -1,0 +1,19 @@
+﻿<!-- Views/Category/Delete.cshtml -->
+@model inventoryApp.Models.Category
+<div class="container mt-5">
+    <h1 class="game-title text-danger">🗑️ Delete Confirmation</h1>
+    <div class="game-card">
+        <p class="text-warning">Are you sure you want to delete <strong>@Model.Name</strong>?</p>
+
+        <dl class="row">
+            <dt class="col-sm-3">Details</dt>
+            <dd class="col-sm-9">@Model.Details</dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">✅ Yes, delete</button>
+            <a href="/Category" class="btn btn-secondary">❌ Cancel</a>
+        </form>
+    </div>
+</div>
