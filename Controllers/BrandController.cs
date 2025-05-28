@@ -7,7 +7,8 @@ namespace InventoryApp.Controllers
 {
     public class BrandController : Controller
     {
-        private static List<Brand> _brands = new List<Brand>
+        
+        public static List<Brand> _brands = new List<Brand>
         {
             new Brand { Id = 1, Name = "Apple", Description = "Consumer electronics manufacturer", LogoUrl = "/images/apple-logo.png" },
             new Brand { Id = 2, Name = "Samsung", Description = "Electronics manufacturer", LogoUrl = "/images/samsung-logo.png" },
@@ -25,6 +26,11 @@ namespace InventoryApp.Controllers
         public IActionResult Details(int id)
         {
             var brand = _brands.FirstOrDefault(b => b.Id == id);
+            var products = ProductController._products
+                .Where(p => p.BrandId == id)
+                .ToList();
+                
+            ViewBag.Products = products;
             return View(brand);
         }
 
