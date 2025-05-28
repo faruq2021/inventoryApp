@@ -20,7 +20,7 @@
         <label asp-for="BrandId">Brand</label>
         <select asp-for="BrandId" class="form-control">
             <option value="">-- Select Brand --</option>
-            @foreach (var brand in BrandController._brands)
+            @foreach (var brand in ViewBag.Brands)
             {
                 <option value="@brand.Id">@brand.Name</option>
             }
