@@ -15,6 +15,14 @@ namespace InventoryApp.Controllers
             new Product { Id = 3, Name = "Tablet", Price = 1000, Quantity = 15 },
         };
 
+        public static List<Status> statusList = new List<Status>
+        {
+            new Status { Id = 1, Name = "In Stock" },
+            new Status { Id = 2, Name = "Out of Stock" },
+            new Status { Id = 3, Name = "Reserved" },
+            new Status { Id = 4, Name = "Damaged" },
+            new Status { Id = 5, Name = "Discontinued" }
+        };
         public IActionResult Index() => View(_products);
 
         public IActionResult Details(int id)
