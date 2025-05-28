@@ -1,10 +1,60 @@
 ﻿@model inventoryApp.Models.Product
+@{
+    var statusList = ViewBag.StatusList as List<inventoryApp.Models.Status>;
+
+    string statusName = statusList?.FirstOrDefault(s => s.Id == Model.StatusId)?.Name ?? "Unknown";
+
+    string statusClass = statusName switch
+    {
+        "In Stock" => "status-instock",
+        "Out of Stock" => "status-outofstock",
+        "Reserved" => "status-reserved",
+        _ => "status-default"
+    };
+}
+
+<style>
+    .status-instock {
+        color: white;
+        background-color: #007bff;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+
+    .status-outofstock {
+        color: white;
+        background-color: #dc3545;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+
+    .status-reserved {
+        color: black;
+        background-color: #ffc107;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+
+    .status-damaged {
+        color: black;
+        background-color: #ffc107;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+
+    .status-default {
+        color: white;
+        background-color: #6c757d;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+</style>
 
 <h1>Edit Product</h1>
 
 <form method="post">
     <input type="hidden" asp-for="Id" />
-    
+
     <div class="form-group mb-3">
         <label asp-for="Name"></label>
         <input asp-for="Name" class="form-control" />
@@ -16,6 +66,18 @@
     <div class="form-group mb-3">
         <label asp-for="Quantity"></label>
         <input asp-for="Quantity" class="form-control" />
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="StatusId">Status</label>
+        <select asp-for="StatusId" class="form-control">
+            @foreach (var status in statusList)
+            {
+                <option value="@status.Id" selected="@(status.Id == Model.StatusId)">
+                    @status.Name
+                </option>
+            }
+        </select>
+
     </div>
     <div class="form-group mb-3">
         <label asp-for="BrandId">Brand</label>
