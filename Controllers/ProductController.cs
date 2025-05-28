@@ -10,7 +10,7 @@ namespace InventoryApp.Controllers
     {
         public static List<Product> _products = new List<Product>
         {
-            new Product { Id = 1, Name = "Laptop", Price = 2000, Quantity = 10 },
+            new Product { Id = 1, Name = "Laptop", Price = 2000, Quantity = 10, status },
             new Product { Id = 2, Name = "Phone", Price = 800, Quantity = 20 },
             new Product { Id = 3, Name = "Tablet", Price = 1000, Quantity = 15 },
         };
@@ -23,7 +23,20 @@ namespace InventoryApp.Controllers
             new Status { Id = 4, Name = "Damaged" },
             new Status { Id = 5, Name = "Discontinued" }
         };
-        public IActionResult Index() => View(_products);
+        public IActionResult Index()
+        {
+            foreach (var product in _products)
+            {
+                var status = statusList.FirstOrDefault(s => s.Id == product.);
+                product.StatusName = status?.Name ?? "unknown";
+            }
+            return View(_products);
+        }
+
+        public IActionResult Index(Product request)
+        {
+
+        }
 
         public IActionResult Details(int id)
         {
