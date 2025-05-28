@@ -27,16 +27,14 @@ namespace InventoryApp.Controllers
         {
             foreach (var product in _products)
             {
-                var status = statusList.FirstOrDefault(s => s.Id == product.);
-                product.StatusName = status?.Name ?? "unknown";
+                var status = statusList.FirstOrDefault(s => s.Id == product.StatusId);
+                product.StatusName = status?.Name ?? "Unknown";
             }
+
             return View(_products);
         }
 
-        public IActionResult Index(Product request)
-        {
 
-        }
 
         public IActionResult Details(int id)
         {
