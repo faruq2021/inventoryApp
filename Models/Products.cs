@@ -1,4 +1,6 @@
-﻿namespace inventoryApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace inventoryApp.Models
 {
     public class Product
     {
