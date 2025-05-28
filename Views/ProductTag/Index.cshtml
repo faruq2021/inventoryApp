@@ -4,7 +4,7 @@
 <div class="container mt-5">
     <h2 class="mb-4">Product Tags</h2>
 
-    <a href="/ProductTags/Create" class="btn btn-primary mb-3">Create New Tag</a>
+    <a href="/ProductTag/Create" class="btn btn-primary mb-3">Create New Tag</a>
 
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
@@ -21,9 +21,9 @@
                     <td>@tag.Id</td>
                     <td>@tag.Name</td>
                     <td>
-                        <a href="/ProductTags/Details/@tag.Id" class="btn btn-info btn-sm">Details</a>
-                        <a href="/ProductTags/Edit/@tag.Id" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="/ProductTags/Delete/@tag.Id" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="/ProductTag/Details/@tag.Id" class="btn btn-info btn-sm">Details</a>
+                        <a href="/ProductTag/Edit/@tag.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/ProductTag/Delete/@tag.Id" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>
             }
